@@ -142,7 +142,7 @@ function rollDice() {
         for (let i = 0; i < count; i++) {
             const sides = parseInt(diceType.slice(1)); // extrai o número de lados do tipo de dado
             const roll = Math.floor(Math.random() * sides) + 1;
-
+            animateDice(diceType);
 
             if (["d6", "d10", "d12"].includes(diceType)) {
                 const sequence = outcomeTable[diceType]
@@ -164,12 +164,28 @@ function rollDice() {
                     pressoes: 0
                 })
             }
+            const diceElement = document.querySelector(`#value-${diceType}`);
+            diceElement.innerText = `0d${diceType.slice(1)}`;
         }
     });
 
     displayResult(results, player);
     saveToFirebase(player, results);
 }
+
+function animateDice(diceType) {
+    const diceElement = document.querySelector(`#dice-${diceType}`);
+
+    // Remove a animação anterior (caso já tenha sido aplicada)
+    diceElement.style.animation = 'none';
+
+    // Força o navegador a resetar a animação
+    void diceElement.offsetWidth; // Esse truque reinicia a animação no navegador
+
+    // Adiciona a animação de rotação de volta
+    diceElement.style.animation = 'dice-roll 0.75s ease-out 2';
+}
+
 
 // Função para exibir o resultado
 function displayResult(results, player) {

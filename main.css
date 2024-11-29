@@ -1,4 +1,4 @@
-/* mestre.css */
+
 /* Reset básico */
 body,
 h1,
@@ -44,10 +44,6 @@ label {
     display: block;
     margin-bottom: 10px;
     font-weight: bold;
-}
-
-#value-d4, #value-d8, #value-d12, #value-d6, #value-d10, #value-d20 {
-    color: white;
 }
 
 input[type="text"] {
@@ -140,22 +136,22 @@ li {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 35px;
     background-color: #ccc;
     border: none;
     cursor: pointer;
     font-size: 25px;
     border-radius: 10px;
 }
-/* Cores de fundo para os botões */
+
 .decrease {
     background-color: #ff6b6b;
 }
 .increase {
     background-color: #4caf50;
 }
-/* Ajustando o valor central */
+
 span {
     font-size: 20px;
     font-weight: bold;
@@ -200,4 +196,151 @@ button.dark-mode:hover {
     font-size: 15px;
     background-color: #5a67d8;
     color: white;
+}
+
+@keyframes dice-roll {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    25% {
+        transform: rotateX(180deg) rotateY(0deg);
+    }
+    50% {
+        transform: rotateX(180deg) rotateY(180deg);
+    }
+    75% {
+        transform: rotateX(360deg) rotateY(180deg);
+    }
+    100% {
+        transform: rotateX(360deg) rotateY(360deg);
+    }
+}
+
+/* Estilos do dado */
+#dice-container {
+    width: 100px;
+    height: 100px;
+    perspective: 1000px; /* Dá a sensação de profundidade ao girar */
+}
+
+#dice {
+    width: 100px;
+    height: 100px;
+    background-color: #ffffff;
+    border: 2px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    text-align: center;
+    border-radius: 10px;
+    animation: dice-roll 3s infinite;
+}
+
+/* Animação de rotação para os dados */
+@keyframes dice-roll {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    25% {
+        transform: rotateX(180deg) rotateY(0deg);
+    }
+    50% {
+        transform: rotateX(180deg) rotateY(180deg);
+    }
+    75% {
+        transform: rotateX(360deg) rotateY(180deg);
+    }
+    100% {
+        transform: rotateX(360deg) rotateY(360deg);
+    }
+}
+
+/* Estilos para o contêiner de dados */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Estilos de cada dado */
+.dice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #5a67d8;
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+}
+
+/* Animação e tamanho do dado */
+.dice.active {
+    animation: dice-roll 1s ease-in-out forwards;
+}
+
+/* Estilos adicionais para os tipos de dados */
+.dice.d4 {
+    width: 60px;
+    height: 60px;
+    perspective: 1000px;
+}
+
+.dice.d6 {
+    width: 80px;
+    height: 80px;
+    perspective: 1000px;
+}
+
+.dice.d8 {
+    width: 80px;
+    height: 80px;
+    perspective: 1000px;
+}
+
+.dice.d10 {
+    width: 90px;
+    height: 90px;
+    perspective: 1000px;
+}
+
+.dice.d12 {
+    width: 100px;
+    height: 100px;
+    perspective: 1000px;
+}
+
+.dice.d20 {
+    width: 120px;
+    height: 120px;
+    perspective: 1000px;
+}
+
+#value-d4, #value-d8, #value-d12, #value-d6, #value-d10, #value-d20 {
+    color: white;
+    perspective: 1000px;
+}
+
+@keyframes dice-roll {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    25% {
+        transform: rotateX(180deg) rotateY(0deg);
+    }
+    50% {
+        transform: rotateX(180deg) rotateY(180deg);
+    }
+    75% {
+        transform: rotateX(360deg) rotateY(180deg);
+    }
+    100% {
+        transform: rotateX(360deg) rotateY(360deg);
+    }
 }
