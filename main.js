@@ -49,9 +49,9 @@ function loadHistoryFromFirebase() {
 
                 // Montando a string de resultados
                 const resultString = entry.results.map(r =>
-                    `${r.dado} (${r.roll}): ${r.sucessos} sucesso${r.sucessos !== 1 ? 's' : ''}, ` +
-                    `${r.adaptacoes} adaptação${r.adaptacoes !== 1 ? 's' : ''}, ` +
-                    `${r.pressoes} pressão${r.pressoes !== 1 ? 's' : ''}`
+                    `${r.dado} (${r.roll}): ${r.sucessos} sucesso${r.sucessos == 1 ? '' : 's'}, ` +
+                    `${r.adaptacoes} adaptaç${r.adaptacoes == 1 ? 'ão' : 'ões'}, ` +
+                    `${r.pressoes} press${r.pressoes == 1 ? 'ão' : 'ões'}.`
                 ).join("<br>");
 
                 // Retorna a entrada formatada com o horário
@@ -186,15 +186,14 @@ function animateDice(diceType) {
     diceElement.style.animation = 'dice-roll 0.75s ease-out 2';
 }
 
-
 // Função para exibir o resultado
 function displayResult(results, player) {
     const playerDiv = document.getElementById("divResults");
 
     const resultString = results.map(r =>
-        `${r.dado} (${r.roll}): ${r.sucessos} sucesso, ` +
-        `${r.adaptacoes} adaptação, ` +
-        `${r.pressoes} pressão`
+        `${r.dado} (${r.roll}): ${r.sucessos} sucesso${r.sucessos == 1 ? 's' : ''},` +
+        `${r.adaptacoes} adaptaç${r.adaptacoes == 1 ? 'ão' : 'ões'}, ` +
+        `${r.pressoes} press${r.adaptacoes == 1 ? 'ão' : 'ões'}.`
     ).join("<br>");
 
     playerDiv.innerHTML = `<strong>${player}:</strong><br>${resultString}`;
