@@ -1,0 +1,203 @@
+/* mestre.css */
+/* Reset básico */
+body,
+h1,
+h2,
+div,
+label,
+input,
+button,
+ul,
+li {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Estilo do corpo */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+/* Cabeçalho principal */
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 2rem;
+    color: #5a67d8;
+}
+/* Container geral */
+div {
+    width: 80%;
+    margin: 20px auto;
+    padding: 10px 15px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+/* Labels e inputs */
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+#value-d4, #value-d8, #value-d12, #value-d6, #value-d10, #value-d20 {
+    color: white;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+/* Botões */
+button {
+    display: inline-block;
+    background-color: #5a67d8;
+    color: #fff;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+button:hover {
+    background-color: #434190;
+}
+/* Resultados */
+#result,
+#history {
+    margin-top: 30px;
+    background: #f7fafc;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+h2 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #2d3748;
+}
+#currentRoll,
+#historyList {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #4a5568;
+}
+/* Lista de histórico */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+li {
+    background: #e2e8f0;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 1rem;
+    word-break: break-word;
+}
+/* Responsividade */
+@media (max-width: 768px) {
+    div {
+        width: 95%;
+    }
+    button {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+/* Ajustando o layout dos botões para que fiquem centralizados */
+.dice {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 165px;
+    height: 50px;
+    background-color: #5a67d8;
+    border-radius: 15px;
+    font-size: 16px;
+    padding: 0 10px;
+}
+/* Estilo dos botões de aumentar e diminuir */
+.decrease,
+.increase {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background-color: #ccc;
+    border: none;
+    cursor: pointer;
+    font-size: 25px;
+    border-radius: 10px;
+}
+/* Cores de fundo para os botões */
+.decrease {
+    background-color: #ff6b6b;
+}
+.increase {
+    background-color: #4caf50;
+}
+/* Ajustando o valor central */
+span {
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    padding: 0 10px;
+}
+
+/* Estilo do modo escuro */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+div.dark-mode {
+    background: #1e1e1e;
+    border-color: #333333;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+button.dark-mode {
+    background-color: #5a67d8;
+    color: white;
+}
+button.dark-mode:hover {
+    background-color: #357a38;
+    color: white;
+}
+.dice.dark-mode {
+    background-color: #5a67d8;
+    color: #ffffff;
+}
+.decrease.dark-mode {
+    background-color: #ff4c4c;
+}
+.increase.dark-mode {
+    background-color: #3da35d;
+}
+
+#character {
+    width: 250px;
+    height: 39px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 15px;
+    background-color: #5a67d8;
+    color: white;
+}

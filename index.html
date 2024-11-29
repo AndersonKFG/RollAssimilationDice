@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rolagem de Dados</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="icon" href="numerology.png" type="image/x-icon">
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+</head>
+
+<body>
+  <h1>Rolagem de Dados</h1>
+
+  <div>
+    <label>Selecione o seu personagem</label>
+    <button id="toggleDarkMode" style="margin: 20px;">Alternar Modo</button>
+    <select name="character" id="character">
+      <option value="unusable">Selecione o seu personagem</option>
+      <option value="Assimilador" class="value">Assimilador</option>
+      <option value="André" class="value">André</option>
+      <option value="Bruno" class="value">Bruno</option>
+      <option value="Michael" class="value">Michael</option>
+      <option value="Theo" class="value">Theo</option>
+      <option value="Laerte" class="value">Laerte</option>
+    </select>
+
+
+  </div>
+
+  <div class="container">
+    <div class="dice" id="dice-d4">
+      <button class="decrease" data-dice="d4">-</button>
+      <span id="value-d4">0d4</span>
+      <button class="increase" data-dice="d4">+</button>
+    </div>
+    <div class="dice" id="dice-d6">
+      <button class="decrease" data-dice="d6">-</button>
+      <span id="value-d6">0d6</span>
+      <button class="increase" data-dice="d6">+</button>
+    </div>
+    <div class="dice" id="dice-d8">
+      <button class="decrease" data-dice="d8">-</button>
+      <span id="value-d8">0d8</span>
+      <button class="increase" data-dice="d8">+</button>
+    </div>
+    <div class="dice" id="dice-d10">
+      <button class="decrease" data-dice="d10">-</button>
+      <span id="value-d10">0d10</span>
+      <button class="increase" data-dice="d10">+</button>
+    </div>
+    <div class="dice" id="dice-d12">
+      <button class="decrease" data-dice="d12">-</button>
+      <span id="value-d12">0d12</span>
+      <button class="increase" data-dice="d12">+</button>
+    </div>
+    <div class="dice" id="dice-d20">
+      <button class="decrease" data-dice="d20">-</button>
+      <span id="value-d20">0d20</span>
+      <button class="increase" data-dice="d20">+</button>
+    </div>
+    <button id="rollDice" onclick="rollDice()">Rolar Dados</button>
+  </div>
+
+  <!-- Resultado -->
+  <div id="resultsContainer" style="margin-top: 20px;">
+    <h2>Resultados da sua rolagem:</h2>
+    <div id="divResults"></div>
+  </div>
+
+  <!-- Histórico -->
+  <div id="history" style="margin-top: 20px;">
+    <button onclick="clearHistory()">Limpar Histórico</button>
+    <h2>Histórico:</h2>
+    <ul id="historyList"></ul>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
