@@ -170,7 +170,11 @@ function rollDice() {
     });
 
     displayResult(results, player);
-    saveToFirebase(player, results);
+    if (player == "Assimilador - Rolagem Oculta") {
+        console.log("Rolagem não salva no histórico por conta de personagem.")
+    } else {
+        saveToFirebase(player, results);
+    }
 }
 
 function animateDice(diceType) {
@@ -221,42 +225,3 @@ function clearHistory() {
         })
         .catch(error => console.error("Erro ao limpar o histórico no Firebase:", error));
 }
-
-const toggleButton = document.getElementById('toggleDarkMode');
-
-toggleButton.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-
-    // Alterar estilos das divs
-    const character = document.getElementById('character');
-    const dice = document.getElementById('dice');
-    const allDivs = document.querySelectorAll('div');
-    const allButtons = document.querySelectorAll('button');
-    const allDice = document.querySelectorAll('.dice');
-    const decreaseButtons = document.querySelectorAll('.decrease');
-    const increaseButtons = document.querySelectorAll('.increase');
-    const allHeadings = document.querySelectorAll('h1, h2'); // Captura os textos de cabeçalho
-
-    allDivs.forEach(div => div.classList.toggle('dark-mode'));
-    allButtons.forEach(button => button.classList.toggle('dark-mode'));
-    allDice.forEach(dice => dice.classList.toggle('dark-mode'));
-    decreaseButtons.forEach(button => button.classList.toggle('dark-mode'));
-    increaseButtons.forEach(button => button.classList.toggle('dark-mode'));
-    allHeadings.forEach(heading => {
-        heading.style.color = document.body.classList.contains('dark-mode') ? '#ffffff' : '#333333';
-    });
-
-
-
-    // Ajusta especificamente a div #history
-    const historyDiv = document.getElementById('history');
-    if (document.body.classList.contains('dark-mode')) {
-        historyDiv.style.backgroundColor = '#1e1e1e';
-        historyDiv.style.color = '#ffffff';
-        historyDiv.style.borderColor = '#333333';
-    } else {
-        historyDiv.style.backgroundColor = '#f7fafc';
-        historyDiv.style.color = '#333333';
-        historyDiv.style.borderColor = '#ddd';
-    }
-});

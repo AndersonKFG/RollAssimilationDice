@@ -1,44 +1,51 @@
-
-/* Reset básico */
-body,
-h1,
-h2,
-div,
-label,
-input,
-button,
-ul,
-li {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 /* Estilo do corpo */
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    background: #f4f4f9;
-    color: #333;
     margin: 0;
     padding: 0;
+    color: #a4bebb;
+    background-color: #0c0414
 }
+
 /* Cabeçalho principal */
 h1 {
     text-align: center;
     margin: 20px 0;
     font-size: 2rem;
-    color: #5a67d8;
 }
-/* Container geral */
-div {
+
+/* Containers e div geral */
+div, #rollDice {
     width: 80%;
     margin: 20px auto;
     padding: 10px 15px;
-    background: #ffffff;
     border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
+.container, #rollDice {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    background-color: #412485;
+}
+
+#rollDice {
+    background-color: #377d86;
+    text-align: center;
+    justify-content: center;
+}
+
+.characterSelection, #resultsContainer {
+    background-color: #412485;
+}
+
+#divResults {
+    background-color: #0f0d54;
+}
+
 /* Labels e inputs */
 label {
     display: block;
@@ -54,11 +61,11 @@ input[type="text"] {
     font-size: 1rem;
     margin-bottom: 15px;
 }
+
 /* Botões */
 button {
     display: inline-block;
-    background-color: #5a67d8;
-    color: #fff;
+    background-color: #377d86;
     font-size: 1rem;
     padding: 10px 20px;
     border: none;
@@ -70,32 +77,26 @@ button:hover {
     background-color: #434190;
 }
 /* Resultados */
-#result,
-#history {
+#result, #history {
     margin-top: 30px;
-    background: #f7fafc;
+    background: #412485;
     padding: 10px;
     border-radius: 4px;
-    border: 1px solid #ddd;
+    border: 1px solid #0f0d54;
 }
-h2 {
-    margin-bottom: 10px;
-    font-size: 1.5rem;
-    color: #2d3748;
-}
-#currentRoll,
-#historyList {
+
+#currentRoll, #historyList {
     font-size: 1rem;
     line-height: 1.5;
-    color: #4a5568;
 }
 /* Lista de histórico */
 ul {
     list-style-type: none;
     padding: 0;
 }
+
 li {
-    background: #e2e8f0;
+    background: #0f0d54;
     margin: 5px 0;
     padding: 10px;
     border-radius: 4px;
@@ -112,27 +113,9 @@ li {
         margin-top: 10px;
     }
 }
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 10px;
-}
-/* Ajustando o layout dos botões para que fiquem centralizados */
-.dice {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 165px;
-    height: 50px;
-    background-color: #5a67d8;
-    border-radius: 15px;
-    font-size: 16px;
-    padding: 0 10px;
-}
+
 /* Estilo dos botões de aumentar e diminuir */
-.decrease,
-.increase {
+.decrease, .increase {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -155,37 +138,7 @@ li {
 span {
     font-size: 20px;
     font-weight: bold;
-    color: black;
     padding: 0 10px;
-}
-
-/* Estilo do modo escuro */
-body.dark-mode {
-    background-color: #121212;
-    color: #ffffff;
-}
-div.dark-mode {
-    background: #1e1e1e;
-    border-color: #333333;
-    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
-}
-button.dark-mode {
-    background-color: #5a67d8;
-    color: white;
-}
-button.dark-mode:hover {
-    background-color: #357a38;
-    color: white;
-}
-.dice.dark-mode {
-    background-color: #5a67d8;
-    color: #ffffff;
-}
-.decrease.dark-mode {
-    background-color: #ff4c4c;
-}
-.increase.dark-mode {
-    background-color: #3da35d;
 }
 
 #character {
@@ -194,26 +147,7 @@ button.dark-mode:hover {
     border-radius: 5px;
     text-align: center;
     font-size: 15px;
-    background-color: #5a67d8;
-    color: white;
-}
-
-@keyframes dice-roll {
-    0% {
-        transform: rotateX(0deg) rotateY(0deg);
-    }
-    25% {
-        transform: rotateX(180deg) rotateY(0deg);
-    }
-    50% {
-        transform: rotateX(180deg) rotateY(180deg);
-    }
-    75% {
-        transform: rotateX(360deg) rotateY(180deg);
-    }
-    100% {
-        transform: rotateX(360deg) rotateY(360deg);
-    }
+    background-color: #377d86;
 }
 
 /* Estilos do dado */
@@ -223,53 +157,12 @@ button.dark-mode:hover {
     perspective: 1000px; /* Dá a sensação de profundidade ao girar */
 }
 
-#dice {
-    width: 100px;
-    height: 100px;
-    background-color: #ffffff;
-    border: 2px solid #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    text-align: center;
-    border-radius: 10px;
-    animation: dice-roll 3s infinite;
-}
-
-/* Animação de rotação para os dados */
-@keyframes dice-roll {
-    0% {
-        transform: rotateX(0deg) rotateY(0deg);
-    }
-    25% {
-        transform: rotateX(180deg) rotateY(0deg);
-    }
-    50% {
-        transform: rotateX(180deg) rotateY(180deg);
-    }
-    75% {
-        transform: rotateX(360deg) rotateY(180deg);
-    }
-    100% {
-        transform: rotateX(360deg) rotateY(360deg);
-    }
-}
-
-/* Estilos para o contêiner de dados */
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-}
-
 /* Estilos de cada dado */
 .dice {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #5a67d8;
+    background-color: #0f0d54;
     border: 2px solid #333;
     border-radius: 10px;
     padding: 10px;
@@ -323,7 +216,6 @@ button.dark-mode:hover {
 }
 
 #value-d4, #value-d8, #value-d12, #value-d6, #value-d10, #value-d20 {
-    color: white;
     perspective: 1000px;
 }
 

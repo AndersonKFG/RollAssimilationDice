@@ -16,19 +16,18 @@
   <h1>Rolagem de Dados</h1>
 </div>
 
-  <div>
+  <div class="characterSelection">
     <label>Selecione o seu personagem</label>
-    <button id="toggleDarkMode" style="margin: 20px;">Alternar Modo</button>
     <select name="character" id="character">
       <option value="unusable">Selecione o seu personagem</option>
-      <option value="Assimilador" class="value">Assimilador</option>
-      <option value="André" class="value">André</option>
+      <option value="Assimilador - Rolagem Oculta" class="value">Assimilador - Rolagem Oculta</option>
+      <option value="Assimilador - Rolagem Exibida" class="value">Assimilador - Rolagem Exibida</option>
+      <option value="André Galvão" class="value">André</option>
       <option value="Bruno" class="value">Bruno</option>
       <option value="Michael" class="value">Michael</option>
       <option value="Theo" class="value">Theo</option>
       <option value="Laerte" class="value">Laerte</option>
     </select>
-
 
   </div>
 
@@ -66,14 +65,15 @@
     <button id="rollDice" onclick="rollDice()">Rolar Dados</button>
   </div>
 
+
   <!-- Resultado -->
-  <div id="resultsContainer" style="margin-top: 20px;">
+  <div id="resultsContainer">
     <h2>Resultados da sua rolagem:</h2>
     <div id="divResults"></div>
   </div>
 
   <!-- Histórico -->
-  <div id="history" style="margin-top: 20px;">
+  <div id="history">
     <button onclick="clearHistory()">Limpar Histórico</button>
     <h2>Histórico:</h2>
     <ul id="historyList"></ul>
