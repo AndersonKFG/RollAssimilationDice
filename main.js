@@ -170,10 +170,11 @@ function rollDice() {
     });
 
     displayResult(results, player);
-    if (player == "Assimilador - Rolagem Oculta") {
-        console.log("Rolagem não salva no histórico por conta de personagem.")
-    } else {
+    
+    if (player != "Assimilador Oculto") {
         saveToFirebase(player, results);
+    } else {
+        console.log("Rolagem do Assimilador Oculto ocultada.")
     }
 }
 
