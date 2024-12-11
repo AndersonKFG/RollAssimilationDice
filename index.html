@@ -14,7 +14,7 @@
 
 <body>
   <h1>Rolagem de Dados</h1>
-</div>
+  </div>
 
   <div id="characterDiv">
     <label>Selecione o seu personagem</label>
@@ -32,6 +32,16 @@
 
   </div>
 
+  <div class="scene">
+    <div class="cube">
+      <div class="face front">1</div>
+      <div class="face back">2</div>
+      <div class="face left">3</div>
+      <div class="face right">4</div>
+      <div class="face top">5</div>
+      <div class="face bottom">6</div>
+    </div>
+  </div>
   <div class="container">
     <div class="dice" id="dice-d4">
       <button class="decrease" data-dice="d4">-</button>
@@ -63,7 +73,7 @@
       <span id="value-d20">0d20</span>
       <button class="increase" data-dice="d20">+</button>
     </div>
-    
+
     <!-- Resultado -->
     <button id="rollDice" onclick="rollDice()">Rolar Dados</button>
     <div id="resultsContainer" style="margin-top: 20px;">

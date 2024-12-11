@@ -1,27 +1,27 @@
 :root {
-    --background--color: rgb(92, 134, 125);
+    --background--color: #00204e;
     /* Teal-Dark-5, fundo suave */
-    --dice--color: #b56ed3;
+    --dice--color:#1e4d81;
     /* Teal-Dark-1, verde-escuro */
-    --text--color: #bce3e4;
+    --text--color: #ffffff;
     /* Teal-Dark-2, verde-acinzentado */
-    --buttons--collors: #84449F;
+    --buttons--collors: #1e4d81;
     /* Teal-Dark-4, tom quente para destaque */
-    --characters--collors: #84449F;
+    --characters--collors: #1e4d81;
     /* Teal-Dark-3, cor terrosa */
-    --mother--results--div: #61a192;
+    --mother--results--div: #143e70;
     /* Teal-Dark-5, cor clara para a div mãe */
-    --daughter--results--div: #84449F;
+    --daughter--results--div: #1e4d81;
     /* Teal-Dark-4, div filha em contraste suave */
-    --results--players--color--div: #84449F;
+    --results--players--color--div: #1e4d81;
     /* Teal-Dark-3, separação dos jogadores */
     --increment--collor-button: #5fb346;
     /* Teal-Dark-2, verde escuro para incremento */
     --decrement--collor-button: #b84a4a;
     /* Teal-Dark-1, cor mais escura para decremento */
-    --border--collors: #2C3532;
+    --border--collors: #00204e;
     /* Teal-Dark-1, consistente para bordas */
-    --hover--button--rollDice: #0F6466;
+    --hover--buttons: #0a2f5f;
     /* */
 }
 
@@ -86,7 +86,7 @@ button {
 }
 
 button:hover {
-    background-color: var(--characters--collors);
+    background-color: var(--hover--buttons);
 }
 
 /* Resultados */
@@ -184,6 +184,11 @@ span {
     border: 1px solid var(--border--collors);
 }
 
+#character:hover {
+    background-color: var(--hover--buttons);
+    cursor: pointer;
+}
+
 /* Estilos do dado */
 #dice-container {
     width: 100px;
@@ -244,7 +249,7 @@ span {
 }
 
 #rollDice:hover {
-    background-color: var(--hover--button--rollDice);
+    background-color: var(--hover--buttons);
 }
 
 /* Animação e tamanho do dado */
@@ -306,4 +311,46 @@ span {
 .dice.active {
     animation: dice-roll 1.8s ease-out forwards;
     /* Efeito suave de desaceleração */
+}
+
+.scene {
+    perspective: 600px;
+}
+
+.cube {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    animation: rotate 5s infinite linear;
+}
+
+.face {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    font-weight: bold;
+    color: #333;
+}
+
+.front  { transform: rotateY(  0deg) translateZ(100px); }
+.back   { transform: rotateY(180deg) translateZ(100px); }
+.left   { transform: rotateY(-90deg) translateZ(100px); }
+.right  { transform: rotateY( 90deg) translateZ(100px); }
+.top    { transform: rotateX( 90deg) translateZ(100px); }
+.bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+@keyframes rotate {
+    from {
+        transform: rotateX(-45deg) rotateY(45deg);
+    }
+    to {
+        transform: rotateX(-45deg) rotateY(405deg);
+    }
 }
