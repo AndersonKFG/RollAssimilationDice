@@ -39,9 +39,9 @@ html {
     justify-content: center;
     align-items: center;
     background-color: #00204e;
-    overflow: hidden;
     background: var(--background--color);
     color: var(--text--color);
+    overflow-x: auto;
 }
 
 .scene {
@@ -54,12 +54,28 @@ html {
 }
 
 
+.dice3d {
+    top: 2em;
+    width: 90vmin;
+    /* O dado ocupa agora 90% da menor dimensão da tela */
+    height: 90vmin;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rollDice 90s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    color: antiquewhite;
+}
+
+html {
+    height: 120em;
+}
+
 .face {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: white;
+    background-color: #567ebb;
     border: 2px solid #333;
+    color: #3d5370;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -70,6 +86,7 @@ html {
 
 .face1 {
     transform: rotateY(0deg) translateZ(45vmin);
+
 }
 
 .face2 {
@@ -116,27 +133,27 @@ html {
 
 .overlay {
     position: absolute;
-    top: 50%;
+    top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
-    /* Garante que o conteúdo fique acima do dado */
     color: white;
-    font-size: 1.4rem;
     font-weight: bold;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 button {
     display: inline-block;
     background-color: var(--buttons--collors);
     color: white;
-    font-size: 1rem;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
 }
 
 .decrease,
@@ -147,21 +164,10 @@ button {
     width: 50px;
     height: 50px;
     cursor: pointer;
-    font-size: 45px;
     border-radius: 20px;
     padding: 25px;
 }
 
-
-.dice3d {
-    width: 90vmin;
-    /* O dado ocupa agora 90% da menor dimensão da tela */
-    height: 90vmin;
-    position: relative;
-    transform-style: preserve-3d;
-    animation: rollDice 90s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    color: antiquewhite;
-}
 
 .decrease {
     background-color: var(--decrement--collor-button);
@@ -175,50 +181,29 @@ button {
     border: 2px solid var(--border--collors);
 }
 
-.dice {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--dice--color);
-    color: var(--text--color);
-    border: 2px solid var(--border--collors);
-    border-radius: 25px;
-    padding: 10px;
-    font-size: 20px;
-    position: relative;
-    width: 120px;
-    height: 120px;
-    text-align: center;
-}
-
-
-
 button:hover {
     background-color: var(--hover--buttons);
 }
 
+.secBody {
+    overflow: auto;
+}
+
 #container,
-#resultsContainer,
 #characterDiv,
 #history {
     width: 90vw;
+    max-height: 45em;
+    /* Define um limite máximo para a altura */
+    overflow-y: auto;
+    /* Permite a rolagem dentro do histórico */
     margin: 20px auto;
     padding: 10px 15px;
-    background: var(--mother--results--div);
+    background: var(--daughter--results--div);
     border: 1px solid var(--border--collors);
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     opacity: 0.9;
-}
-
-#divResults {
-    width: 80vw;
-    margin: 20px auto;
-    padding: 10px 15px;
-    background: var(--mother--results--div);
-    border: 1px solid var(--border--collors);
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 #character {
@@ -226,7 +211,6 @@ button:hover {
     height: 39px;
     border-radius: 5px;
     text-align: center;
-    font-size: 15px;
     background-color: var(--characters--collors);
     color: var(--text--color);
     border: 1px solid var(--border--collors);
@@ -235,14 +219,6 @@ button:hover {
 #character:hover {
     background-color: var(--hover--buttons);
     cursor: pointer;
-}
-
-
-#container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
 }
 
 @media (max-width: 768px) {
@@ -265,24 +241,6 @@ label {
 
 /* ---------- Separação -------------- */
 
-/* Estilos do dado */
-#dice-container {
-    width: 100px;
-    height: 100px;
-    perspective: 1000px;
-    /* Dá a sensação de profundidade ao girar */
-}
-
-#value-d4,
-#value-d8,
-#value-d12,
-#value-d6,
-#value-d10,
-#value-d20 {
-    color: var(--text--color);
-    perspective: 1000px;
-}
-
 /* Estilos de cada dado */
 .dice {
     display: flex;
@@ -292,25 +250,22 @@ label {
     color: var(--text--color);
     border: 2px solid var(--border--collors);
     border-radius: 25px;
-    padding: 10px;
-    font-size: 20px;
     position: relative;
-    width: 120px;
-    height: 120px;
     text-align: center;
+    width: 8em;
+    height: 8em;
 }
 
 #rollDice {
     display: flex;
-    width: 100vh;
-    height: 5vh;
+    width: 100em;
+    height: 3em;
     background-color: var(--buttons--collors);
     color: var(--text--color);
     border: 2px solid var(--border--collors);
     text-align: center;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
     line-height: 5vh;
 }
 
@@ -323,3 +278,75 @@ label {
     animation: dice-roll 1.5s cubic-bezier(0.17, 0.67, 0.83, 0.67) forwards;
     /* Mais suave */
 }
+
+#currentRoll,
+#historyList {
+    line-height: 1.5;
+    color: var(--text--color);
+}
+
+/* Lista de histórico */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: var(--daughter--results--div);
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 4px;
+    word-break: break-word;
+    border: 1px solid var(--border--collors);
+}
+
+/* Customizando a barra de rolagem no navegador */
+::-webkit-scrollbar {
+    width: 12px; /* Largura da barra de rolagem */
+    height: 12px; /* Altura da barra de rolagem para a rolagem horizontal */
+}
+
+/* Estilo para o trilho da barra de rolagem */
+::-webkit-scrollbar-track {
+    background: var(--mother--results--div); /* Cor de fundo do trilho */
+    border-radius: 10px; /* Borda arredondada */
+}
+
+/* Estilo para o polegar da barra de rolagem (a parte que você arrasta) */
+::-webkit-scrollbar-thumb {
+    background-color: var(--dice--color); /* Cor do polegar */
+    border-radius: 10px; /* Borda arredondada */
+    border: 3px solid var(--mother--results--div); /* Borda do polegar */
+}
+
+/* Estilo para quando o polegar da barra de rolagem é hover (passando o mouse) */
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--increment--collor-button); /* Cor do polegar ao passar o mouse */
+}
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+#history {
+    height: 50em;
+    max-height: 50em;
+}
+
+
+#divResults {
+    width: 80vw;
+    margin: 20px auto;
+    padding: 10px 15px;
+    background: var(--mother--results--div);
+    border: 1px solid var(--border--collors);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#resultsContainer {
+    max-height: 10em;
+}   

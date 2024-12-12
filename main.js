@@ -170,10 +170,17 @@ function rollDice() {
     });
 
     displayResult(results, player);
-    
+
     if (player != "Assimilador Oculto") {
-        saveToFirebase(player, results);
+        if (results == "") {
+            alert("Selecione os dados para a rolagem.")
+        } else {
+            displayResult(results, player);
+            saveToFirebase(player, results);
+
+        }
     } else {
+        displayResult(results, player);
         console.log("Rolagem do Assimilador Oculto ocultada.")
     }
 }
