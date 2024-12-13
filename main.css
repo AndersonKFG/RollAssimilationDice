@@ -55,13 +55,13 @@ html {
 
 
 .dice3d {
-    top: 2em;
+    top: -7em;
     width: 90vmin;
     /* O dado ocupa agora 90% da menor dimensão da tela */
     height: 90vmin;
     position: relative;
     transform-style: preserve-3d;
-    animation: rollDice 90s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation: rollDice 240s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94);
     color: antiquewhite;
 }
 
@@ -80,7 +80,6 @@ html {
     align-items: center;
     justify-content: center;
     font-size: 50vmin;
-    font-weight: bold;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -133,13 +132,12 @@ html {
 
 .overlay {
     position: absolute;
-    top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
     color: white;
-    font-weight: bold;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    font-size: 0.8em;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -152,8 +150,6 @@ button {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
 }
 
 .decrease,
@@ -189,11 +185,9 @@ button:hover {
     overflow: auto;
 }
 
-#container,
-#characterDiv,
-#history {
-    width: 90vw;
-    max-height: 45em;
+#characterDiv {
+    width: 60vw;
+    max-height: 60em;
     /* Define um limite máximo para a altura */
     overflow-y: auto;
     /* Permite a rolagem dentro do histórico */
@@ -206,9 +200,56 @@ button:hover {
     opacity: 0.9;
 }
 
+#history {
+    width: 60vw;
+    height: 60em;
+    max-height: 60em;
+    /* Define um limite máximo para a altura */
+    overflow-y: auto;
+    /* Permite a rolagem dentro do histórico */
+    margin: 20px auto;
+    padding: 10px 15px;
+    background: var(--daughter--results--div);
+    border: 1px solid var(--border--collors);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0.9;
+}
+
+
+
+#container {
+    width: 60vw;
+    max-height: 50em;
+    /* Define um limite máximo para a altura */
+    background: var(--daughter--results--div);
+    border: 1px solid var(--border--collors);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0.9;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+
+#divResults {
+    overflow: auto;
+    width: 50vw;
+    height: 20em;
+    max-height: 20em;
+    margin: 20px auto;
+    padding: 10px 15px;
+    background: var(--mother--results--div);
+    border: 1px solid var(--border--collors);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
 #character {
-    width: 40vh;
-    height: 39px;
+    width: 20em;
+    height: 3em;
     border-radius: 5px;
     text-align: center;
     background-color: var(--characters--collors);
@@ -236,7 +277,6 @@ button:hover {
 label {
     display: block;
     margin-bottom: 10px;
-    font-weight: bold;
 }
 
 /* ---------- Separação -------------- */
@@ -254,19 +294,20 @@ label {
     text-align: center;
     width: 8em;
     height: 8em;
+    margin-top: 1em;
+    margin-left: 2em;
 }
 
 #rollDice {
     display: flex;
-    width: 100em;
-    height: 3em;
+    width: 60em;
     background-color: var(--buttons--collors);
     color: var(--text--color);
     border: 2px solid var(--border--collors);
     text-align: center;
     align-items: center;
     justify-content: center;
-    line-height: 5vh;
+    line-height: 2.5vh;
 }
 
 #rollDice:hover {
@@ -302,51 +343,32 @@ li {
 
 /* Customizando a barra de rolagem no navegador */
 ::-webkit-scrollbar {
-    width: 12px; /* Largura da barra de rolagem */
-    height: 12px; /* Altura da barra de rolagem para a rolagem horizontal */
+    width: 12px;
+    /* Largura da barra de rolagem */
+    height: 12px;
+    /* Altura da barra de rolagem para a rolagem horizontal */
 }
 
 /* Estilo para o trilho da barra de rolagem */
 ::-webkit-scrollbar-track {
-    background: var(--mother--results--div); /* Cor de fundo do trilho */
-    border-radius: 10px; /* Borda arredondada */
+    background: var(--mother--results--div);
+    /* Cor de fundo do trilho */
+    border-radius: 10px;
+    /* Borda arredondada */
 }
 
 /* Estilo para o polegar da barra de rolagem (a parte que você arrasta) */
 ::-webkit-scrollbar-thumb {
-    background-color: var(--dice--color); /* Cor do polegar */
-    border-radius: 10px; /* Borda arredondada */
-    border: 3px solid var(--mother--results--div); /* Borda do polegar */
+    background-color: var(--dice--color);
+    /* Cor do polegar */
+    border-radius: 10px;
+    /* Borda arredondada */
+    border: 3px solid var(--mother--results--div);
+    /* Borda do polegar */
 }
 
 /* Estilo para quando o polegar da barra de rolagem é hover (passando o mouse) */
 ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--increment--collor-button); /* Cor do polegar ao passar o mouse */
+    background-color: var(--increment--collor-button);
+    /* Cor do polegar ao passar o mouse */
 }
-
-#container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-}
-
-#history {
-    height: 50em;
-    max-height: 50em;
-}
-
-
-#divResults {
-    width: 80vw;
-    margin: 20px auto;
-    padding: 10px 15px;
-    background: var(--mother--results--div);
-    border: 1px solid var(--border--collors);
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-#resultsContainer {
-    max-height: 10em;
-}   
